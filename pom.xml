@@ -21,7 +21,9 @@
         <module>dao-module</module>
     </modules>
 
+    <dependencyManagement>
 
+    </dependencyManagement>
 
 
 </project>
