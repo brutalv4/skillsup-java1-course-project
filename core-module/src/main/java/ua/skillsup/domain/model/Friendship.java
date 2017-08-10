@@ -1,4 +1,4 @@
-package ua.skillsup.domain;
+package ua.skillsup.domain.model;
 
 public class Friendship extends GenericDTO {
 }
