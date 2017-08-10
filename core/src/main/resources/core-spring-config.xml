@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- import other configs -->
+    <import resource="dao-spring-config.xml"/>
+
+    <!-- domain services definition -->
+    <bean id="personService" class="ua.skillsup.service.impl.PersonServiceImpl" init-method="init">
+        <constructor-arg index="0" ref="personDao"/>
+    </bean>
+
+    <bean id="postService" class="ua.skillsup.service.impl.PostServiceImpl"/>
+    <bean id="interestService" class="ua.skillsup.service.impl.InterestServiceImpl"/>
+
+    <!-- main service definition -->
+    <bean id="mainService" class="ua.skillsup.service.impl.MainServiceImpl">
+        <constructor-arg index="0" ref="personService"/>
+        <constructor-arg index="1" ref="postService"/>
+        <constructor-arg index="2" ref="interestService"/>
+    </bean>
+
+</beans>
