@@ -6,7 +6,11 @@ import ua.skillsup.service.PersonService;
 
 public class PersonServiceImpl extends GenericService implements PersonService {
 
-    private PersonDao dao;
+    private final PersonDao DAO;
+
+    public PersonServiceImpl(PersonDao dao) {
+        this.DAO = dao;
+    }
 
     private void init() {
 
@@ -25,13 +29,5 @@ public class PersonServiceImpl extends GenericService implements PersonService {
     @Override
     public boolean addFriendship(Person friend) {
         return false;
-    }
-
-
-    public PersonServiceImpl() {
-    }
-
-    public PersonServiceImpl(PersonDao dao) {
-        this.dao = dao;
     }
 }

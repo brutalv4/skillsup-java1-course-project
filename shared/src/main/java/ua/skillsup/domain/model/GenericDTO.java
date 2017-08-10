@@ -1,6 +1,6 @@
 package ua.skillsup.domain.model;
 
-import ua.skillsup.domain.DTO;
+import ua.skillsup.domain.HasId;
 
-public abstract class GenericDTO implements DTO {
+public abstract class GenericDTO implements HasId {
 }

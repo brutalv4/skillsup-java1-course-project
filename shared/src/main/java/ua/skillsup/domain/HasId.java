@@ -1,4 +1,4 @@
 package ua.skillsup.domain;
 
-public interface DTO {
+public interface HasId {
 }

@@ -1,4 +1,4 @@
 package ua.skillsup.dao;
 
-public interface HobbyDao extends Dao {
+public interface HobbyDao extends GenericDao {
 }

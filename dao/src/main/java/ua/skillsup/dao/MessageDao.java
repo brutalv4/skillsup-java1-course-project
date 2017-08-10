@@ -1,4 +1,4 @@
 package ua.skillsup.dao;
 
-public interface MessageDao extends Dao {
+public interface MessageDao extends GenericDao {
 }
