@@ -8,6 +8,13 @@
     <artifactId>course-project</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <!-- maven compiler set up for 1.8 -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
     <modules>
         <module>core-module</module>
         <module>dao-module</module>
