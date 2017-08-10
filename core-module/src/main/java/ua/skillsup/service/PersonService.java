@@ -1,5 +1,5 @@
 package ua.skillsup.service;
 
-public interface PersonService {
+public interface PersonService extends Service {
 
 }
