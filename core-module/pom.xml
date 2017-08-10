@@ -12,4 +12,10 @@
     <artifactId>core-module</artifactId>
     <name>CORE</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+    </dependencies>
 </project>
