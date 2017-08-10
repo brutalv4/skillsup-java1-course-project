@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>core-module</artifactId>
-    <name>CORE</name>
+    <artifactId>dao-module</artifactId>
+    <name>DAO</name>
 
 </project>
