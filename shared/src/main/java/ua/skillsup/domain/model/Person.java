@@ -1,12 +1,14 @@
 package ua.skillsup.domain.model;
 
+import ua.skillsup.domain.HasId;
+
 import java.util.Date;
 
-public class Person extends GenericDTO {
+public class Person extends HasId {
 
     private String firstName;
     private String lastName;
-    private Date birthday;
+    private Date birthDate;
     private String nickname;
 
     public Person() {
@@ -35,12 +37,12 @@ public class Person extends GenericDTO {
         return this;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public Person setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public Person setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
         return this;
     }
 

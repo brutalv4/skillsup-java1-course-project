@@ -1,7 +1,14 @@
 package ua.skillsup.domain;
 
-public interface HasId {
+public abstract class HasId implements Dto {
 
-    long gitId();
-    void setId(long id);
+    private long id;
+
+    public long gitId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

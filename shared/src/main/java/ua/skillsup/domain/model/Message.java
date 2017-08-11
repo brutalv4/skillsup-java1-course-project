@@ -1,11 +1,13 @@
 package ua.skillsup.domain.model;
 
-import java.time.LocalDate;
+import ua.skillsup.domain.HasId;
 
-public class Message extends GenericDTO {
+import java.util.Date;
+
+public class Message extends HasId {
 
     private String content;
-    private LocalDate timeSent;
+    private Date dateSent;
     private Person fromPerson;
     private Person toPerson;
 
@@ -26,12 +28,12 @@ public class Message extends GenericDTO {
         return this;
     }
 
-    public LocalDate getTimeSent() {
-        return timeSent;
+    public Date getDateSent() {
+        return dateSent;
     }
 
-    public Message setTimeSent(LocalDate timeSent) {
-        this.timeSent = timeSent;
+    public Message setDateSent(Date dateSent) {
+        this.dateSent = dateSent;
         return this;
     }
 
