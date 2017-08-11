@@ -6,10 +6,10 @@ import ua.skillsup.service.PersonService;
 
 public class PersonServiceImpl extends GenericService implements PersonService {
 
-    private final PersonDao DAO;
+    private final PersonDao dao;
 
     public PersonServiceImpl(PersonDao dao) {
-        this.DAO = dao;
+        this.dao = dao;
     }
 
     private void init() {

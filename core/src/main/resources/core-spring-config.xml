@@ -13,7 +13,10 @@
     </bean>
 
     <bean id="postService" class="ua.skillsup.service.impl.PostServiceImpl"/>
-    <bean id="interestService" class="ua.skillsup.service.impl.InterestServiceImpl"/>
+    <bean id="interestService" class="ua.skillsup.service.impl.InterestServiceImpl" init-method="init">
+        <constructor-arg index="0" ref="placeDao"/>
+        <constructor-arg index="1" ref="hobbyDao"/>
+    </bean>
 
     <!-- main service definition -->
     <bean id="mainService" class="ua.skillsup.service.impl.MainServiceImpl">
