@@ -7,4 +7,5 @@
     <bean id="hobbyDao" class="ua.skillsup.dao.impl.HobbyDaoImpl"/>
     <bean id="messageDao" class="ua.skillsup.dao.impl.MessageDaoImpl"/>
     <bean id="placeDao" class="ua.skillsup.dao.impl.PlaceDaoImpl"/>
+    <bean id="postDao" class="ua.skillsup.dao.impl.PostDaoImpl"/>
 </beans>
