@@ -1,6 +1,6 @@
 package ua.skillsup.domain;
 
-public abstract class HasId implements Dto {
+public abstract class HasId {
 
     private long id;
 

@@ -1,8 +1,6 @@
 package ua.skillsup.domain.model;
 
-import ua.skillsup.domain.Dto;
-
-public class PostLike implements Dto {
+public class PostLike {
 
     private Post post;
     private Person person;

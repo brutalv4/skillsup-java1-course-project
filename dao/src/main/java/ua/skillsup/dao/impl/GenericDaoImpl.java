@@ -1,10 +1,8 @@
 package ua.skillsup.dao.impl;
 
-import ua.skillsup.domain.Dto;
-
 import java.util.List;
 
-public abstract class GenericDaoImpl<E extends Dto> implements ua.skillsup.dao.GenericDao {
+public abstract class GenericDaoImpl<E> implements ua.skillsup.dao.GenericDao {
 
     @Override
     public Object save(Object entity) {

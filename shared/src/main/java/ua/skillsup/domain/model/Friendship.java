@@ -1,10 +1,8 @@
 package ua.skillsup.domain.model;
 
-import ua.skillsup.domain.Dto;
-
 import java.util.Date;
 
-public class Friendship implements Dto {
+public class Friendship {
 
     private Person ownerPerson;
     private Person friendPerson;
