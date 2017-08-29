@@ -14,6 +14,8 @@ public class App {
 
 
         MainService mainService = context.getBean("mainService", MainService.class);
+
+        Object personDao = context.getBean("personDao");
         System.out.println();
     }
 }

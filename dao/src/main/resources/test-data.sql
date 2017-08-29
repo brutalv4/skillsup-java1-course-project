@@ -1,0 +1,4 @@
+INSERT INTO PERSON
+  (FIRST_NAME, LAST_NAME, BIRTH_DATE, NICKNAME)
+VALUES
+  ('Vladimir', 'Bredihin', '1985-02-05', 'Nickname?');

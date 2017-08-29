@@ -2,13 +2,13 @@ package ua.skillsup.domain.model;
 
 import ua.skillsup.domain.HasId;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Person extends HasId {
 
     private String firstName;
     private String lastName;
-    private Date birthDate;
+    private LocalDate birthDate;
     private String nickname;
 
     public Person() {
@@ -37,11 +37,11 @@ public class Person extends HasId {
         return this;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public Person setBirthDate(Date birthDate) {
+    public Person setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
         return this;
     }

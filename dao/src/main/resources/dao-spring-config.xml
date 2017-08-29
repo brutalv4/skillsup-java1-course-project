@@ -2,21 +2,33 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
     <!-- registering properties file -->
     <context:property-placeholder location="dao.properties" order="1"/>
 
+    <!-- registering DataSource -->
+    <jdbc:embedded-database id="dataSource" type="H2">
+        <jdbc:script location="classpath:schema.sql"/>
+        <jdbc:script location="test-data.sql"/>
+    </jdbc:embedded-database>
+
     <!-- hibernate beans -->
+    <context:component-scan base-package="ua.skillsup"/>
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="packagesToScan" value="ua.skillsup.dao.entity"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="show_sql">${hibernate.show_sql}</prop>
+                <!-- generate tables automatically -->
+                <!--<prop key="hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>-->
             </props>
         </property>
     </bean>
 
-    <bean id="personDao" class="ua.skillsup.dao.impl.PersonDaoImpl" init-method="init"/>
+    <bean id="personDao" class="ua.skillsup.dao.impl.PersonDaoImpl" />
     <bean id="hobbyDao" class="ua.skillsup.dao.impl.HobbyDaoImpl"/>
     <bean id="messageDao" class="ua.skillsup.dao.impl.MessageDaoImpl"/>
     <bean id="placeDao" class="ua.skillsup.dao.impl.PlaceDaoImpl"/>
