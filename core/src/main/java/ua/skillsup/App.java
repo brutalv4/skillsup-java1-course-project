@@ -1,7 +1,9 @@
 package ua.skillsup;
 
+import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import ua.skillsup.service.MainService;
 
 public class App {
@@ -12,6 +14,6 @@ public class App {
 
 
         MainService mainService = context.getBean("mainService", MainService.class);
-        System.out.println(mainService);
+        System.out.println();
     }
 }
