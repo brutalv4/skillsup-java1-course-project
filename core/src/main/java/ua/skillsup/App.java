@@ -4,7 +4,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ua.skillsup.dao.PersonDao;
 import ua.skillsup.domain.HasId;
+import ua.skillsup.domain.model.Person;
 import ua.skillsup.service.MainService;
+
+import java.util.List;
 
 public class App {
 
@@ -16,8 +19,8 @@ public class App {
         MainService mainService = context.getBean("mainService", MainService.class);
 
         PersonDao personDao = context.getBean("personDao", PersonDao.class);
-        personDao.findAll();
+        Person second = personDao.findById(2);
 
-        System.out.println();
+        System.out.println(second);
     }
 }

@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface GenericDao<E> {
 
-    E save(E entity);
-    void update(E entity);
-    void delete(E entity);
+    E save(E dto);
+    boolean update(E dto);
+    boolean delete(E dto);
     E findById(long id);
     List<E> findAll();
 }

@@ -54,4 +54,37 @@ public class Person extends HasId {
         this.nickname = nickname;
         return this;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person person = (Person) o;
+
+        if (!firstName.equals(person.firstName)) return false;
+        if (!lastName.equals(person.lastName)) return false;
+        if (!birthDate.equals(person.birthDate)) return false;
+        return nickname != null ? nickname.equals(person.nickname) : person.nickname == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + birthDate.hashCode();
+        result = 31 * result + (nickname != null ? nickname.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + getId() +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                ", nickname='" + nickname + '\'' +
+                '}';
+    }
 }

@@ -4,7 +4,7 @@ public abstract class HasId {
 
     private long id;
 
-    public long gitId() {
+    public long getId() {
         return id;
     }
 
