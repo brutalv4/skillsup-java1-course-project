@@ -3,7 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
     <!-- registering properties file -->
     <context:property-placeholder location="dao.properties" order="1"/>
@@ -14,9 +19,9 @@
         <jdbc:script location="test-data.sql"/>
     </jdbc:embedded-database>
 
-    <!-- hibernate beans -->
-    <context:component-scan base-package="ua.skillsup"/>
+    <!-- hibernate configuration -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan" value="ua.skillsup.dao.entity"/>
         <property name="hibernateProperties">
             <props>
@@ -28,7 +33,16 @@
         </property>
     </bean>
 
-    <bean id="personDao" class="ua.skillsup.dao.impl.PersonDaoImpl" />
+    <!-- after: Could not obtain transaction-synchronized Session for current thread -->
+    <tx:annotation-driven/>
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
+
+    <!-- Daos configuration -->
+    <bean id="personDao" class="ua.skillsup.dao.impl.PersonDaoImpl">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
     <bean id="hobbyDao" class="ua.skillsup.dao.impl.HobbyDaoImpl"/>
     <bean id="messageDao" class="ua.skillsup.dao.impl.MessageDaoImpl"/>
     <bean id="placeDao" class="ua.skillsup.dao.impl.PlaceDaoImpl"/>

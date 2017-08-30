@@ -1,9 +1,9 @@
 package ua.skillsup;
 
-import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import ua.skillsup.dao.PersonDao;
+import ua.skillsup.domain.HasId;
 import ua.skillsup.service.MainService;
 
 public class App {
@@ -15,7 +15,9 @@ public class App {
 
         MainService mainService = context.getBean("mainService", MainService.class);
 
-        Object personDao = context.getBean("personDao");
+        PersonDao personDao = context.getBean("personDao", PersonDao.class);
+        personDao.findAll();
+
         System.out.println();
     }
 }

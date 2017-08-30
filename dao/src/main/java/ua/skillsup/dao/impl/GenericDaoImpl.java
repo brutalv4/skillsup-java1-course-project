@@ -2,30 +2,30 @@ package ua.skillsup.dao.impl;
 
 import java.util.List;
 
-public abstract class GenericDaoImpl<E> implements ua.skillsup.dao.GenericDao {
+public abstract class GenericDaoImpl<E> implements ua.skillsup.dao.GenericDao<E> {
 
     @Override
-    public Object save(Object entity) {
+    public E save(E entity) {
         return null;
     }
 
     @Override
-    public void update(Object entity) {
+    public void update(E entity) {
 
     }
 
     @Override
-    public void delete(Object entity) {
+    public void delete(E entity) {
 
     }
 
     @Override
-    public Object findById(long id) {
+    public E findById(long id) {
         return null;
     }
 
     @Override
-    public List findAll() {
+    public List<E> findAll() {
         return null;
     }
 }
