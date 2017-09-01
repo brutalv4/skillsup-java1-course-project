@@ -3,6 +3,8 @@ package ua.skillsup.dao.converters;
 import ua.skillsup.dao.entity.PersonEntity;
 import ua.skillsup.domain.model.Person;
 
+import java.sql.Date;
+
 public final class EntityDtoConverter {
 
     private EntityDtoConverter() {
@@ -32,9 +34,11 @@ public final class EntityDtoConverter {
         if (person != null) {
             result = new PersonEntity();
             result.setFirstName(person.getFirstName());
-            result.setLastName();
+            result.setLastName(person.getLastName());
+            result.setBirthDate(Date.valueOf(person.getBirthDate()));
+            result.setNickname(person.getNickname());
         }
 
-        return null;
+        return result;
     }
 }

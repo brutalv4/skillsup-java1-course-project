@@ -10,15 +10,15 @@ public abstract class GenericDaoImpl<E> implements ua.skillsup.dao.GenericDao<E>
     }
 
     @Override
-    public boolean update(E dto) {
+    public E update(E dto) {
 
-        return false;
+        return null;
     }
 
     @Override
-    public boolean delete(E dto) {
+    public E delete(E dto) {
 
-        return false;
+        return null;
     }
 
     @Override

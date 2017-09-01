@@ -7,6 +7,8 @@ import ua.skillsup.domain.HasId;
 import ua.skillsup.domain.model.Person;
 import ua.skillsup.service.MainService;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 public class App {
@@ -19,8 +21,14 @@ public class App {
         MainService mainService = context.getBean("mainService", MainService.class);
 
         PersonDao personDao = context.getBean("personDao", PersonDao.class);
-        Person second = personDao.findById(2);
+//        Person second = personDao.findById(2);
+        Person person = new Person("Dmitry", "Kovalevsky");
+        person.setBirthDate(LocalDate.of(1985, Month.APRIL, 30));
+        person.setNickname("Diamond");
 
-        System.out.println(second);
+        personDao.save(person);
+        personDao.findById(3);
+        System.out.println();
+
     }
 }
