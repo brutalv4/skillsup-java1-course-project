@@ -26,8 +26,8 @@ public class App {
         person.setBirthDate(LocalDate.of(1985, Month.APRIL, 30));
         person.setNickname("Diamond");
 
-        personDao.save(person);
-        personDao.findById(3);
+//        personDao.save(person);
+//        personDao.findById(3);
         System.out.println();
 
     }

@@ -1,4 +1,4 @@
 package ua.skillsup.dao;
 
-public interface PlaceDao extends GenericDao {
+public interface PlaceDao {
 }
