@@ -6,7 +6,7 @@ import ua.skillsup.domain.model.PostLike;
 
 import java.util.List;
 
-public interface PostService extends Service {
+public interface PostService {
     List<Post> getLatestPostsForUser(Person person, int count);
     List<PostLike> getAllLikesForPost(Post post);
 }

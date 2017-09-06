@@ -6,7 +6,7 @@ import ua.skillsup.domain.model.Place;
 
 import java.util.List;
 
-public interface InterestService extends Service {
+public interface InterestService {
 
     Place addPlace(Place place);
     Hobby addHobby(Hobby hobby);

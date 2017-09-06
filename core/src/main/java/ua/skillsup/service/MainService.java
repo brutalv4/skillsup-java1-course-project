@@ -1,4 +1,4 @@
 package ua.skillsup.service;
 
-public interface MainService extends Service {
+public interface MainService {
 }
