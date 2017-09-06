@@ -2,23 +2,23 @@ package ua.skillsup.dao.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ua.skillsup.dao.PersonDao;
 import ua.skillsup.dao.converters.EntityDtoConverter;
 import ua.skillsup.dao.entity.PersonEntity;
 import ua.skillsup.domain.model.Person;
 
-import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-@Transactional
 public class PersonDaoImpl extends GenericDaoImpl<Person> implements PersonDao {
 
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
+    @Autowired
     public PersonDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
@@ -59,8 +59,7 @@ public class PersonDaoImpl extends GenericDaoImpl<Person> implements PersonDao {
         Session session = sessionFactory.getCurrentSession();
         Object result = session.get(PersonEntity.class, id);
 
-        Person person = EntityDtoConverter.convert((PersonEntity) result);
-        return person;
+        return EntityDtoConverter.convert((PersonEntity) result);
     }
 
     @Override

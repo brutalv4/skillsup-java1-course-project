@@ -18,9 +18,9 @@ public class App {
                 new ClassPathXmlApplicationContext("core-spring-config.xml");
 
 
-        MainService mainService = context.getBean("mainService", MainService.class);
+        MainService mainService = context.getBean(MainService.class);
 
-        PersonDao personDao = context.getBean("personDao", PersonDao.class);
+        PersonDao personDao = context.getBean(PersonDao.class);
 //        Person second = personDao.findById(2);
         Person person = new Person("Dmitry", "Kovalevsky");
         person.setBirthDate(LocalDate.of(1985, Month.APRIL, 30));

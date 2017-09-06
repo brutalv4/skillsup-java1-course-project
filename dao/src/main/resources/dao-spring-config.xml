@@ -34,13 +34,4 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <constructor-arg ref="sessionFactory"/>
     </bean>
-
-    <!-- Daos configuration -->
-    <bean id="personDao" class="ua.skillsup.dao.impl.PersonDaoImpl">
-        <constructor-arg ref="sessionFactory"/>
-    </bean>
-    <bean id="hobbyDao" class="ua.skillsup.dao.impl.HobbyDaoImpl"/>
-    <bean id="messageDao" class="ua.skillsup.dao.impl.MessageDaoImpl"/>
-    <bean id="placeDao" class="ua.skillsup.dao.impl.PlaceDaoImpl"/>
-    <bean id="postDao" class="ua.skillsup.dao.impl.PostDaoImpl"/>
 </beans>

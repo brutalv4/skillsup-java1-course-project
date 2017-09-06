@@ -1,5 +1,7 @@
 package ua.skillsup.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ua.skillsup.dao.HobbyDao;
 import ua.skillsup.dao.PlaceDao;
 import ua.skillsup.domain.model.Hobby;
@@ -9,10 +11,12 @@ import ua.skillsup.service.InterestService;
 
 import java.util.List;
 
+@Service
 public class InterestServiceImpl extends GenericService implements InterestService {
     private final PlaceDao placeDao;
     private final HobbyDao hobbyDao;
 
+    @Autowired
     public InterestServiceImpl(PlaceDao placeDao, HobbyDao hobbyDao) {
         this.placeDao = placeDao;
         this.hobbyDao = hobbyDao;
