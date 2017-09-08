@@ -4,14 +4,16 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ua.skillsup.dao.PersonDao;
-import ua.skillsup.dao.converters.EntityDtoConverter;
 import ua.skillsup.dao.entity.PersonEntity;
 import ua.skillsup.domain.model.Person;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import static ua.skillsup.dao.converters.EntityDtoConverter.convert;
 
 @Repository
 public class PersonDaoImpl extends GenericDaoImpl<Person> implements PersonDao {
@@ -28,9 +30,10 @@ public class PersonDaoImpl extends GenericDaoImpl<Person> implements PersonDao {
     }
 
     @Override
+    @Transactional
     public Person save(Person dto) {
         Session session = sessionFactory.getCurrentSession();
-        PersonEntity entity = EntityDtoConverter.convert(dto);
+        PersonEntity entity = convert(dto);
         Serializable id = session.save(entity);
 
         dto.setId((Long) id);
@@ -39,15 +42,17 @@ public class PersonDaoImpl extends GenericDaoImpl<Person> implements PersonDao {
     }
 
     @Override
+    @Transactional
     public Person update(Person dto) {
 
         return null;
     }
 
     @Override
+    @Transactional
     public Person delete(Person dto) {
         Session session = sessionFactory.getCurrentSession();
-        PersonEntity entity = EntityDtoConverter.convert(dto);
+        PersonEntity entity = convert(dto);
         session.delete(entity);
         dto.setId(0);
 
@@ -55,14 +60,16 @@ public class PersonDaoImpl extends GenericDaoImpl<Person> implements PersonDao {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Person findById(long id) {
         Session session = sessionFactory.getCurrentSession();
         Object result = session.get(PersonEntity.class, id);
 
-        return EntityDtoConverter.convert((PersonEntity) result);
+        return convert((PersonEntity) result);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Person> findAll() {
         Session session = sessionFactory.getCurrentSession();
         List<PersonEntity> people =
@@ -72,7 +79,7 @@ public class PersonDaoImpl extends GenericDaoImpl<Person> implements PersonDao {
         List<Person> result = new ArrayList<>(people.size());
 
         for (PersonEntity personEntity : people) {
-            Person person = EntityDtoConverter.convert(personEntity);
+            Person person = convert(personEntity);
             result.add(person);
         }
 
