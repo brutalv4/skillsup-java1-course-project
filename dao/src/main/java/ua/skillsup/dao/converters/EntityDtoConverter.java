@@ -12,10 +12,9 @@ public final class EntityDtoConverter {
     }
 
     public static Person convert(PersonEntity entity) {
-        Person result = null;
+        Person result = new Person();
 
         if (entity != null) {
-            result = new Person();
             result.setId(entity.getId());
             result.setFirstName(entity.getFirstName());
             result.setLastName(entity.getLastName());
@@ -29,10 +28,9 @@ public final class EntityDtoConverter {
     }
 
     public static PersonEntity convert(Person person) {
-        PersonEntity result = null;
+        PersonEntity result = new PersonEntity();
 
         if (person != null) {
-            result = new PersonEntity();
             result.setFirstName(person.getFirstName());
             result.setLastName(person.getLastName());
             result.setBirthDate(Date.valueOf(person.getBirthDate()));
