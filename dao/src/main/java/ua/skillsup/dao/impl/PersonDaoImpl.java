@@ -16,7 +16,7 @@ import java.util.List;
 import static ua.skillsup.dao.converters.EntityDtoConverter.convert;
 
 @Repository
-public class PersonDaoImpl extends GenericDaoImpl<Person> implements PersonDao {
+public class PersonDaoImpl implements PersonDao {
 
     private final SessionFactory sessionFactory;
 
@@ -41,14 +41,12 @@ public class PersonDaoImpl extends GenericDaoImpl<Person> implements PersonDao {
         return dto;
     }
 
-    @Override
     @Transactional
     public Person update(Person dto) {
 
         return null;
     }
 
-    @Override
     @Transactional
     public Person delete(Person dto) {
         Session session = sessionFactory.getCurrentSession();
@@ -59,7 +57,6 @@ public class PersonDaoImpl extends GenericDaoImpl<Person> implements PersonDao {
         return dto;
     }
 
-    @Override
     @Transactional(readOnly = true)
     public Person findById(long id) {
         Session session = sessionFactory.getCurrentSession();

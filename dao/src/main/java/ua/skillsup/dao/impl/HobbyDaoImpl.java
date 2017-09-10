@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import ua.skillsup.dao.HobbyDao;
 
 @Repository
-public class HobbyDaoImpl extends GenericDaoImpl implements HobbyDao {
+public class HobbyDaoImpl implements HobbyDao {
 
     private final SessionFactory sessionFactory;
 

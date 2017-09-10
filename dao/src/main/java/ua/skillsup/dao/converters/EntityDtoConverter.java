@@ -1,5 +1,6 @@
 package ua.skillsup.dao.converters;
 
+import org.junit.runner.RunWith;
 import ua.skillsup.dao.entity.PersonEntity;
 import ua.skillsup.domain.model.Person;
 

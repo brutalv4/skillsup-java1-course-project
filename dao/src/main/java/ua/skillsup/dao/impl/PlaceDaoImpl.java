@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import ua.skillsup.dao.PlaceDao;
 
 @Repository
-public class PlaceDaoImpl extends GenericDaoImpl implements PlaceDao {
+public class PlaceDaoImpl implements PlaceDao {
 
     private final SessionFactory sessionFactory;
 
