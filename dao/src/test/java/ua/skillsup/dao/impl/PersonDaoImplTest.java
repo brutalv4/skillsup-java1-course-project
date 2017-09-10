@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.skillsup.dao.PersonDao;
+import ua.skillsup.domain.model.Person;
 
 import javax.transaction.Transactional;
+
+import static org.junit.Assert.assertNotEquals;
 
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -19,7 +22,10 @@ public class PersonDaoImplTest {
     private PersonDao dao;
 
     @Test
-    public void testSave() throws Exception {
+    public void testSave_checkRecordsCountAfter() throws Exception {
+        int sizeBefore = dao.findAll().size();
+        dao.save(new Person("John", "Doe"));
+        assertNotEquals(sizeBefore, dao.findAll().size());
 
     }
 
