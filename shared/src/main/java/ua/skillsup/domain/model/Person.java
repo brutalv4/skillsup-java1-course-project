@@ -8,7 +8,7 @@ public class Person extends HasId {
 
     private String firstName;
     private String lastName;
-    private LocalDate birthDate;
+    private LocalDate birthDate = LocalDate.MIN; // default value
     private String nickname;
 
     public Person() {
