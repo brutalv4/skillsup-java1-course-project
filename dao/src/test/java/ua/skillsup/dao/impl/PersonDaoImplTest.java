@@ -1,5 +1,9 @@
 package ua.skillsup.dao.impl;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +15,9 @@ import ua.skillsup.domain.model.Person;
 
 import javax.transaction.Transactional;
 
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertThat;
 
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -20,13 +26,26 @@ public class PersonDaoImplTest {
 
     @Autowired
     private PersonDao dao;
+    private Person person;
+
+    @Before
+    public void prepare() {
+        person = new Person("John", "Doe");
+    }
 
     @Test
-    public void testSave_checkRecordsCountAfter() throws Exception {
+    public void testSave_checkRecordsCountAfter() {
         int sizeBefore = dao.findAll().size();
-        dao.save(new Person("John", "Doe"));
-        assertNotEquals(sizeBefore, dao.findAll().size());
+        dao.save(person);
 
+        assertThat(dao.findAll().size(), greaterThan(sizeBefore));
+    }
+
+    @Test
+    public void testSave_checkPersonIdAfter() {
+        dao.save(person);
+
+        assertThat((Long) person.getId(), greaterThan(0));
     }
 
     @Test
