@@ -7,5 +7,7 @@ import java.util.List;
 public interface PersonDao {
 
     List<Person> findAll();
-    Person save(Person dto);
+    int count();
+    Person save(Person person);
+    Person delete(Person person);
 }

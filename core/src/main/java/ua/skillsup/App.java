@@ -28,7 +28,7 @@ public class App {
 
 //        personDao.save(person);
 //        personDao.findById(3);
-        System.out.println();
+        System.out.println(person);
 
     }
 }

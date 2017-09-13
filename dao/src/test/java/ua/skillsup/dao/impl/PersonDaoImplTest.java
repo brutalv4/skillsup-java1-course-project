@@ -13,6 +13,7 @@ import ua.skillsup.domain.model.Person;
 import javax.transaction.Transactional;
 
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertThat;
 
 @Transactional
@@ -22,24 +23,20 @@ public class PersonDaoImplTest {
 
     @Autowired
     private PersonDao dao;
-    private Person person;
-
-    @Before
-    public void prepare() {
-        person = new Person("John", "Doe");
-    }
 
     @Test
-    public void testSave_checkRecordsCountAfter() {
-        int sizeBefore = dao.findAll().size();
+    public void testSave_checkCountAfter() {
+        int sizeBefore = dao.count();
+        Person person = new Person("John", "Doe");
         dao.save(person);
 
-        assertThat("Records count didn't change after save! ",
-                dao.findAll().size(), greaterThan(sizeBefore));
+        assertThat("Count didn't change after save! ",
+                dao.count(), greaterThan(sizeBefore));
     }
 
     @Test
     public void testSave_checkPersonIdAfter() {
+        Person person = new Person("John", "Doe");
         dao.save(person);
 
         assertThat("Person Id didn't set after save!",
@@ -52,8 +49,14 @@ public class PersonDaoImplTest {
     }
 
     @Test
-    @Ignore
-    public void delete() throws Exception {
+    public void testDelete_checkCountAfter() throws Exception {
+        Person person = new Person("John", "Doe");
+        dao.save(person);
+        int countBefore = dao.count();
+        dao.delete(person);
+
+        assertThat("Count didn't change after delete!",
+                dao.count(), lessThan(countBefore));
     }
 
     @Test
