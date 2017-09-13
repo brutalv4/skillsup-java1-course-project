@@ -1,8 +1,5 @@
 package ua.skillsup.dao.impl;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -16,7 +13,6 @@ import ua.skillsup.domain.model.Person;
 import javax.transaction.Transactional;
 
 import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
 
 @Transactional
@@ -38,14 +34,16 @@ public class PersonDaoImplTest {
         int sizeBefore = dao.findAll().size();
         dao.save(person);
 
-        assertThat(dao.findAll().size(), greaterThan(sizeBefore));
+        assertThat("Records count didn't change after save! ",
+                dao.findAll().size(), greaterThan(sizeBefore));
     }
 
     @Test
     public void testSave_checkPersonIdAfter() {
         dao.save(person);
 
-        assertThat((Long) person.getId(), greaterThan(0));
+        assertThat("Person Id didn't set after save!",
+                Long.valueOf(person.getId()), greaterThan(Long.valueOf(0)));
     }
 
     @Test
