@@ -28,10 +28,11 @@ public class PersonDaoImpl implements PersonDao {
         this.sessionFactory = sessionFactory;
     }
 
-    private void init() {
-
-    }
-
+    /**
+     *
+     * @param person
+     * @return
+     */
     @Override
     @Transactional
     public Person save(Person person) {
@@ -45,17 +46,32 @@ public class PersonDaoImpl implements PersonDao {
         return person;
     }
 
+    /**
+     *
+     * @param person
+     * @return
+     */
+    @Override
     @Transactional
-    public Person update(Person dto) {
+    public Person update(Person person) {
+        PersonEntity entity = find(person);
+
+
+
+        sessionFactory.getCurrentSession().save(entity);
+
 
         return null;
     }
 
+    /**
+     *
+     * @param person
+     * @return
+     */
     @Transactional
     public Person delete(Person person) {
-        Session session = sessionFactory.getCurrentSession();
-        PersonEntity entity = find(person);
-        session.delete(entity);
+        sessionFactory.getCurrentSession().delete(find(person));
         person.setId(0);
         count--;
         return person;
@@ -63,10 +79,11 @@ public class PersonDaoImpl implements PersonDao {
 
 
     /**
-     * Searches corresponding person entity in database via the highest possible
-     * criteria built for given person DTO.
-     * @param person
-     * @return
+     * Searches person entity in database via the highest possible
+     * criteria built for given person.
+     * @param   person
+     *          Person DTO
+     * @return  Corresponding Person Entity
      */
     private PersonEntity find(Person person) {
         PersonEntity result;
@@ -95,14 +112,20 @@ public class PersonDaoImpl implements PersonDao {
         return result;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Transactional(readOnly = true)
     public Person findById(long id) {
-        Session session = sessionFactory.getCurrentSession();
-        Object result = session.get(PersonEntity.class, id);
-
-        return convert((PersonEntity) result);
+        return convert((PersonEntity) sessionFactory.getCurrentSession().get(PersonEntity.class, id));
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     @Transactional(readOnly = true)
     public List<Person> findAll() {
@@ -121,6 +144,10 @@ public class PersonDaoImpl implements PersonDao {
         return result;
     }
 
+    /**
+     *
+     * @return
+     */
     public int count() {
         return count;
     }

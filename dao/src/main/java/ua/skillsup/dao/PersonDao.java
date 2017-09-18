@@ -10,4 +10,5 @@ public interface PersonDao {
     int count();
     Person save(Person person);
     Person delete(Person person);
+    Person update(Person person);
 }
