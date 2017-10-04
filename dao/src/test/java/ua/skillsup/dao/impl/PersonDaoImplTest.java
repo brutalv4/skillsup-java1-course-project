@@ -25,12 +25,12 @@ public class PersonDaoImplTest {
 
     @Test
     public void testSave_checkCountAfter() {
-        int sizeBefore = dao.count();
+        int sizeBefore = dao.findAll().size();
         Person person = new Person("John", "Doe");
         dao.save(person);
 
         assertThat("Count didn't change after save! ",
-                dao.count(), greaterThan(sizeBefore));
+                dao.findAll().size(), greaterThan(sizeBefore));
     }
 
     @Test
@@ -51,11 +51,11 @@ public class PersonDaoImplTest {
     public void testDelete_checkCountAfter() throws Exception {
         Person person = new Person("John", "Doe");
         dao.save(person);
-        int countBefore = dao.count();
+        int countBefore = dao.findAll().size();
         dao.delete(person);
 
         assertThat("Count didn't change after delete!",
-                dao.count(), lessThan(countBefore));
+                dao.findAll().size(), lessThan(countBefore));
     }
 
     @Test

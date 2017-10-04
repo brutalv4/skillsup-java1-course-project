@@ -21,7 +21,6 @@ import static ua.skillsup.dao.converters.EntityDtoConverter.convert;
 @Repository
 public class PersonDaoImpl implements PersonDao {
     private final SessionFactory sessionFactory;
-    private int count;
 
     @Autowired
     public PersonDaoImpl(SessionFactory sessionFactory) {
@@ -41,7 +40,6 @@ public class PersonDaoImpl implements PersonDao {
         Serializable id = session.save(entity);
 
         person.setId((Long) id);
-        count++;
 
         return person;
     }
@@ -73,7 +71,6 @@ public class PersonDaoImpl implements PersonDao {
     public Person delete(Person person) {
         sessionFactory.getCurrentSession().delete(find(person));
         person.setId(0);
-        count--;
         return person;
     }
 
@@ -142,13 +139,5 @@ public class PersonDaoImpl implements PersonDao {
         }
 
         return result;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int count() {
-        return count;
     }
 }
