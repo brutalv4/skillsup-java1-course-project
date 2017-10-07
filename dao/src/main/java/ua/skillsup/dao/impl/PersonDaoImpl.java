@@ -52,12 +52,8 @@ public class PersonDaoImpl implements PersonDao {
     @Override
     @Transactional
     public Person update(Person person) {
-        PersonEntity entity = find(person);
-
-
-
+        PersonEntity entity = null;
         sessionFactory.getCurrentSession().save(entity);
-
 
         return null;
     }
@@ -69,44 +65,8 @@ public class PersonDaoImpl implements PersonDao {
      */
     @Transactional
     public Person delete(Person person) {
-        sessionFactory.getCurrentSession().delete(find(person));
         person.setId(0);
         return person;
-    }
-
-
-    /**
-     * Searches person entity in database via the highest possible
-     * criteria built for given person.
-     * @param   person
-     *          Person DTO
-     * @return  Corresponding Person Entity
-     */
-    private PersonEntity find(Person person) {
-        PersonEntity result;
-
-        if (person.getId() == 0) {
-            Session currentSession = sessionFactory.getCurrentSession();
-            Criteria criteria = currentSession.createCriteria(PersonEntity.class);
-
-            Optional.ofNullable(person.getFirstName())
-                    .ifPresent(value -> criteria.add(Restrictions.eq("firstName", value)));
-
-            Optional.ofNullable(person.getLastName())
-                    .ifPresent(value -> criteria.add(Restrictions.eq("lastName", value)));
-
-            Optional.ofNullable(person.getBirthDate())
-                    .ifPresent(value -> criteria.add(Restrictions.eq("birthDate", value)));
-
-            Optional.ofNullable(person.getNickname())
-                    .ifPresent(value -> criteria.add(Restrictions.eq("nickname", value)));
-
-            result = (PersonEntity) criteria.uniqueResult();
-        } else {
-            result = (PersonEntity) sessionFactory.getCurrentSession().get(PersonEntity.class, person.getId());
-        }
-
-        return result;
     }
 
     /**
