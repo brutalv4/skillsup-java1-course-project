@@ -8,7 +8,7 @@
     <!-- registering DataSource -->
     <jdbc:embedded-database id="dataSource" type="H2">
         <jdbc:script location="classpath:scheme.sql"/>
-        <jdbc:script location="test-data.sql"/>
+        <jdbc:script location="classpath:test-data.sql"/>
     </jdbc:embedded-database>
 
     <!-- hibernate configuration -->

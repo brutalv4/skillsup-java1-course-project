@@ -24,6 +24,7 @@ public class PersonDaoImplTest {
     private PersonDao dao;
 
     @Test
+    @Ignore
     public void testSave_checkCountAfter() {
         int sizeBefore = dao.findAll().size();
         Person person = new Person("John", "Doe");
@@ -34,6 +35,7 @@ public class PersonDaoImplTest {
     }
 
     @Test
+    @Ignore
     public void testSave_checkPersonIdAfter() {
         Person person = new Person("John", "Doe");
         dao.save(person);
@@ -48,6 +50,7 @@ public class PersonDaoImplTest {
     }
 
     @Test
+    @Ignore
     public void testDelete_checkCountAfter() throws Exception {
         Person person = new Person("John", "Doe");
         dao.save(person);
