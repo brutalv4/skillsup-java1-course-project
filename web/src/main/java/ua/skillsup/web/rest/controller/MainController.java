@@ -17,7 +17,7 @@ public class MainController {
     public String main(Model model) {
 
 
-        return "main";
+        return "login";
     }
 
 }

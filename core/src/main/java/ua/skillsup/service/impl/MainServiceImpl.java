@@ -9,7 +9,6 @@ import ua.skillsup.service.PostService;
 
 @Service
 public class MainServiceImpl extends GenericService implements MainService {
-
     private final PersonService personService;
     private final PostService postService;
     private final InterestService interestService;

@@ -79,9 +79,10 @@
         </dependency>
     </dependencies>
 
-    <!-- pointing to web.xml -->
     <build>
+        <finalName>social-course-webapp</finalName>
         <plugins>
+            <!-- pointing to web.xml -->
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
@@ -89,5 +90,7 @@
                 </configuration>
             </plugin>
         </plugins>
+
+
     </build>
 </project>
