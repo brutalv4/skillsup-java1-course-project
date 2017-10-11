@@ -22,15 +22,15 @@
             <div class="col-md-12">
                 <div class="bg-content">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Username" id="login-usr" aria-describedby="basic-addon1">
                     </div>
 
                     <div class="input-group" style="margin-top: 10px">
-                        <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Password" id="login-pwd" aria-describedby="basic-addon1">
                     </div>
 
                     <div class="input-group" style="margin-top: 50px;">
-                        <a href="#" class="btn btn-success btn-lg">LOGIN</a>
+                        <a href="#" class="btn btn-success btn-lg" id="login-submit">LOGIN</a>
                     </div>
                 </div>
             </div>
