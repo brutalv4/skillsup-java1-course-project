@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="input-group" style="margin-top: 10px">
-                        <input type="text" class="form-control" placeholder="Password" id="login-pwd" aria-describedby="basic-addon1">
+                        <input type="password" class="form-control" placeholder="Password" id="login-pwd" aria-describedby="basic-addon1">
                     </div>
 
                     <div class="input-group" style="margin-top: 50px;">
